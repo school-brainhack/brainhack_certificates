@@ -1,0 +1,76 @@
+\documentclass[16pt]{scrartcl}
+\usepackage[letterpaper,left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{pdflscape,setspace,amsmath,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{calligra}
+\usepackage{tgschola}
+\usepackage{fourier-orns}
+\usepackage{graphicx}
+\usepackage{wallpaper}
+\usepackage[normalem]{ulem}
+\usepackage{charter}
+\usepackage{microtype}
+\hyphenpenalty 100000
+%=============================
+\input Zallman.fd
+\newcommand*\initfamily{\usefont{U}{Zallman}{xl}{n}}
+%=============================
+\usepackage{datatool}
+\DTLloaddb{names}{../data/namelist/example_namelist.csv}
+%=============================
+\def\signature#1#2{\parbox[b]{1in}{\smash{#1}\vskip12pt}
+\hfill \parbox[t]{2.8in}{\shortstack{\vrule width 2.8in height 0.4pt\\\small#2}}}
+
+\def\signatured#1{\parbox[t][][c]{9in}{\centering \includegraphics[width=.45\linewidth]{../data/signature/signature.pdf}\\ \shortstack{\vrule width 2.8in height 0.4pt\\\small#1}}}
+
+
+\def\sigskip{\vskip0.4in plus 0.1in}
+        \def\beginskip{\vskip0.5875in plus 0.1in}
+%=============================
+\definecolor{title}{RGB}{0,0,0}
+\definecolor{other}{RGB}{171,0,255}
+\definecolor{name}{RGB}{255,0,0}
+\definecolor{phd}{RGB}{0,0,240}
+%=============================
+\begin{document}
+\begin{landscape}
+\linespread{1.25}\selectfont
+\pagestyle{empty}
+%\TileWallPaper{1\paperwidth}{1\paperheight}{border-2.jpg}
+%=============================
+\DTLforeach{names}{
+\name=Name, \inst=Inst}{
+%=============================
+\noindent
+\begin{minipage}[c]{9in}
+{\centering
+     \includegraphics[width=\linewidth]{../data/logos/logo_brainhack_multicolor.png}
+\par}
+\end{minipage}
+\vskip2em
+{\centering
+ { 
+%\noindent\centering {\bfseries{\MakeUppercase{\name}} \\ \bfseries{\MakeUppercase{\inst}}} \\
+\noindent\centering {\large \bfseries{\name}} \\
+}
+ \vskip1em
+    {\LARGE\bfseries \color{title}{Certificate of Graduation}}\\
+    \vskip1em
+    {\Large\bfseries Brainhack School, 2023}\\%\initfamily
+    \emph{\bfseries \ UdeM, Montreal, Quebec, Canada\\}
+{\ May, 8th - June, 2nd\\}
+}
+ \begin{minipage}{0.45\textwidth}		
+		\includegraphics[width=3.5cm]{../data/logos/logo_udem.png}
+	\end{minipage}
+  \begin{minipage}{0.45\textwidth}		
+		\includegraphics[width=3.5cm]{../data/logos/logo_TOSI.png}
+	\end{minipage}
+ \begin{minipage}{0.45\textwidth}		
+		\includegraphics[width=3.5cm]{../data/logos/logo_UNIQUE.png}
+	\end{minipage}
+\newpage
+}
+\end{landscape}
+\end{document} 
